@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -32,6 +33,31 @@ namespace ConsoleApp1
             Console.WriteLine("Derived.DoSomethingNonVirtual");
         }
     }
+
+    class Proces
+    {
+        public string OSVersion { get; set; }
+        public string MachineName { get; set; }
+
+        List<ICollection<string>> GetProcesses() { 
+        Lazy<ICollection<string>> processes = 
+            new Lazy<ICollection<string>>(
+            ()=>
+            {
+                List<string> processNames = new List<string>();
+                foreach(var p in Process.GetProcesses())
+                {
+                    processNames.Add(p.ProcessName);
+                }
+                return processNames;
+            }
+         );
+            return null;
+        }
+
+
+    }
+
     class Program
     {
         static void Main(string[] args)
