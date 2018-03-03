@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Numerics;
 
 namespace ConsoleApp1
 {
@@ -38,24 +39,45 @@ namespace ConsoleApp1
     {
         public string OSVersion { get; set; }
         public string MachineName { get; set; }
-
-        List<ICollection<string>> GetProcesses() { 
-        Lazy<ICollection<string>> processes = 
-            new Lazy<ICollection<string>>(
-            ()=>
-            {
-                List<string> processNames = new List<string>();
-                foreach(var p in Process.GetProcesses())
-                {
-                    processNames.Add(p.ProcessName);
-                }
-                return processNames;
-            }
-         );
+        public Proces()
+        {
+            this.MachineName = Environment.MachineName;
+            this.OSVersion = Environment.OSVersion.ToString();
+        }
+        public Lazy<ICollection<string>> GetProcesses()
+        {
+            Lazy<ICollection<string>> processes =
+               new Lazy<ICollection<string>>(
+               () =>
+               {
+                   List<string> processNames = new List<string>();
+                   foreach (var p in Process.GetProcesses())
+                   {
+                       processNames.Add(p.ProcessName);
+                   }
+                   return processNames;
+               }
+            );
+            PrintSystemInfo(processes, true);
+            Console.ReadKey();
             return null;
         }
 
-
+        public void PrintSystemInfo(Lazy<ICollection<string>> processNames, bool showProcesses)
+        {
+            Console.WriteLine("MachineName: {0}", Environment.MachineName);
+            Console.WriteLine("OS version: {0}", Environment.OSVersion);
+            Console.WriteLine("DBG: Is process list created? {0}", processNames.IsValueCreated);
+            if (showProcesses)
+            {
+                Console.WriteLine("Processes:");
+                foreach(string p in processNames.Value)
+                {
+                    Console.WriteLine(p);
+                }
+                Console.WriteLine("DBG: Is process list created? {0}", processNames.IsValueCreated);
+            }
+        }
     }
 
     class Program
@@ -77,18 +99,26 @@ namespace ConsoleApp1
             //d.DoSomethingNonVirtual();
 
             /*Malo Linq*/
-            List<int> list = new List<int>();
-            list.Add(1);
-            list.Add(2);
-            list.Add(3);
+            //List<int> list = new List<int>();
+            //list.Add(1);
+            //list.Add(2);
+            //list.Add(3);
 
-            Console.WriteLine("Prosjek: " + list.Average().ToString());
+            //console.writeline("prosjek: " + list.average().tostring());
 
-            string path = @"C:\";
-            foreach (string f in Directory.EnumerateDirectories(path))
-            { Console.WriteLine(f); }
+            /*Citanje direktorija: */
+            //string path = @"C:\";
+            //foreach (string f in Directory.EnumerateDirectories(path))
+            //{ Console.WriteLine(f); }
 
-
+            /*Procesi i info o OS:*/
+            //Proces p = new Proces();
+            //p.GetProcesses();
+            //p.PrintSystemInfo(p.GetProcesses(), true);
+            /*Brojevi*/
+            BigInteger x = 3;
+            Console.WriteLine(x.IsEven.ToString());
+            
         }
     }
 }
