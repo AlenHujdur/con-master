@@ -118,7 +118,7 @@ namespace ConsoleApp1
             /*Brojevi*/
             BigInteger x = 3;
             Console.WriteLine(x.IsEven.ToString());
-            
+            /*Greetings from Asus*/            
         }
     }
 }
