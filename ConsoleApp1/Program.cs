@@ -118,6 +118,7 @@ namespace ConsoleApp1
             /*Brojevi*/
             BigInteger x = 3;
             Console.WriteLine(x.IsEven.ToString());
+            /*Greetings from Asus*/            
             /*Culturel Info*/
             //Console.WriteLine(number.ToString("F3", CultureInfo.InvariantCulture));
         }
