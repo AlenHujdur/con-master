@@ -115,12 +115,20 @@ namespace ConsoleApp1
             //Proces p = new Proces();
             //p.GetProcesses();
             //p.PrintSystemInfo(p.GetProcesses(), true);
+
             /*Brojevi*/
-            BigInteger x = 3;
-            Console.WriteLine(x.IsEven.ToString());
-            /*Greetings from Asus*/            
+            //BigInteger x = 3;
+            //Console.WriteLine(x.IsEven.ToString());
+            /*Greetings from Asus*/
+
             /*Culturel Info*/
             //Console.WriteLine(number.ToString("F3", CultureInfo.InvariantCulture));
+
+            /*Number converter*/
+            Int32 num = 13;
+            byte[] bytes = BitConverter.GetBytes(num);
+
+            
         }
     }
 }
