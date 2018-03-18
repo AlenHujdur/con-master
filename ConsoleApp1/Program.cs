@@ -124,11 +124,32 @@ namespace ConsoleApp1
             /*Culturel Info*/
             //Console.WriteLine(number.ToString("F3", CultureInfo.InvariantCulture));
 
+            /*duplicates with N counting */
+
+            int[] DeleteNth(int[] arr, int x)
+            {
+                // ...
+                int n = 0;
+                int[] arr2 = { };
+                for (int i = 0; i < arr.Length(); i++)
+                {
+                    if (arr[i] == arr[i + 1])
+                    {
+                        n++;
+                        if (n <= x)
+                            arr2[i] = arr[i];
+                    }
+                }
+                return arr2;
+            }
+
+
             /*Number converter*/
             Int32 num = 13;
             byte[] bytes = BitConverter.GetBytes(num);
 
-            
+            /*Enumerable*/
+
         }
     }
 }
